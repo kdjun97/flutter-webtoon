@@ -12,7 +12,7 @@ class TodayModel {
   factory TodayModel.fromJson(Map<String, dynamic> json) {
     return TodayModel(
       title: json['title'] ,
-      thumbLink: json['thumbLink'],
+      thumbLink: json['thumb'],
       id: json['id'],
     );
   }
