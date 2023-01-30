@@ -14,7 +14,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: MyAppBar(appBar: AppBar()),
+      appBar: MyAppBar(appBar: AppBar(), title: "오늘의 웹툰"),
       body: FutureBuilder(
           future: todayModels,
           builder: (context, snapshot) {
