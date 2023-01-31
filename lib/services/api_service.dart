@@ -8,6 +8,7 @@ import 'package:webtoon_project/model/today_model.dart';
 
 class ApiService {
   static const String baseUrl = "https://webtoon-crawler.nomadcoders.workers.dev";
+  static const String launchUrl = "https://comic.naver.com/webtoon/detail?";
   static const String today = "today";
 
   static Future<List<TodayModel>> getTodaysToons() async {

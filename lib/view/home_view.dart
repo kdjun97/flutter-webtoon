@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:webtoon_project/model/today_model.dart';
 import 'package:webtoon_project/services/api_service.dart';
 import 'package:webtoon_project/view/widgets/loading.dart';
-import 'package:webtoon_project/view/widgets/my_app_bar.dart';
 import 'package:webtoon_project/view/widgets/webtoon_card/webtoon_listview.dart';
 
 typedef tModel = List<TodayModel>;
@@ -14,7 +13,17 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: MyAppBar(appBar: AppBar(), title: "오늘의 웹툰"),
+      appBar: AppBar(
+        title: const Text('오늘의 웹툰',
+          style: TextStyle(
+            fontSize:22.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        elevation: 2,
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.purple,
+      ),
       body: FutureBuilder(
           future: todayModels,
           builder: (context, snapshot) {
