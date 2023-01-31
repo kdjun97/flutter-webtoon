@@ -1,3 +1,6 @@
+List<TodayModel> todayModelListFromJson(List<dynamic> body) =>
+    List<TodayModel>.from(body.map((element) => TodayModel.fromJson(element)));
+
 class TodayModel {
   final String? title; // webtoon title
   final String? thumbLink; // 썸네일 링크

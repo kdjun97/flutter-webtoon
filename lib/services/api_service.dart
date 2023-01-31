@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 import 'package:webtoon_project/model/detail_model.dart';
@@ -10,16 +11,12 @@ class ApiService {
   static const String today = "today";
 
   static Future<List<TodayModel>> getTodaysToons() async {
-    print("api 서비스 안");
     List<TodayModel> webtoonModelList = [];
     final url = Uri.parse('$baseUrl/$today');
     final response = await http.get(url);
     if (response.statusCode == 200) {
-      print('status 200');
-      List<dynamic> webtoons = jsonDecode(response.body);
-      webtoons.forEach((element) {
-        webtoonModelList.add(TodayModel.fromJson(element));
-      });
+      List<dynamic> result = jsonDecode(response.body);
+      webtoonModelList = todayModelListFromJson(result);
       return webtoonModelList;
     }
     throw Error();
@@ -35,16 +32,14 @@ class ApiService {
     throw Error();
   }
 
-  static Future<List<EpisodeModel>> getEpisodeTon(String id) async {
+  static Future<List<EpisodeModel>> getEpisodeToons(String id) async {
     List<EpisodeModel> episodeModels = [];
     final url = Uri.parse('$baseUrl/$id/episodes');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
-      final result = jsonDecode(response.body);
-      result.forEach((element){
-        episodeModels.add(EpisodeModel.fromJson(element));
-      });
+      List<dynamic> result = jsonDecode(response.body);
+      episodeModels = episodeModelListFromJson(result);
       return episodeModels;
     }
     throw Error();

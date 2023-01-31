@@ -1,3 +1,6 @@
+List<EpisodeModel> episodeModelListFromJson(List<dynamic> body) =>
+    List<EpisodeModel>.from(body.map((element) => EpisodeModel.fromJson(element)));
+
 class EpisodeModel {
   final String? thumb; // 썸네일 링크
   final String? id; // id
